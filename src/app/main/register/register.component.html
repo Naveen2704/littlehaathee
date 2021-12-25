@@ -1,0 +1,31 @@
+<ion-content>
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-4 col-12">
+                <h4 class="text-center my-3">REGISTER</h4>
+                <p class="text-center">Please fill in the information below</p>
+                <form [(formGroup)]="registerForm" (ngSubmit)="registerUser()">
+                    <ion-item class="w-100 mb-3">
+                        <ion-label position="floating">Name</ion-label>
+                        <ion-input type="text" formControlName="name"></ion-input>
+                    </ion-item>
+                    <ion-item class="w-100 mb-3">
+                        <ion-label position="floating">Email</ion-label>
+                        <ion-input type="text" formControlName="email"></ion-input>
+                    </ion-item>
+                    <ion-item class="w-100 mb-3">
+                        <ion-label position="floating">Mobile</ion-label>
+                        <ion-input type="text" formControlName="mobile"></ion-input>
+                    </ion-item>
+                    <ion-item class="w-100 mb-3">
+                        <ion-label position="floating">Password</ion-label>
+                        <ion-input type="password" formControlName="password"></ion-input>
+                    </ion-item>
+                    <button class="btn btn-block app-btn">Submit</button>
+                </form>
+                <p class="text-center mt-5 font-weight-normal">Already have an account? <a [routerLink]="['/auth']" class="font-weight-bold">Login</a></p>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</ion-content>

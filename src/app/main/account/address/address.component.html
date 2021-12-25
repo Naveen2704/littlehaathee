@@ -1,0 +1,50 @@
+<ion-content>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form [formGroup]="addForm" (ngSubmit)="saveAddress()">
+                    <h4 class="mb-1">Please Add Address</h4>
+                    <p><small>Fill all the fields</small></p>
+                    <ion-item class="w-100 mb-3">
+                        <ion-label position="floating">Name</ion-label>
+                        <ion-input formControlName="name"></ion-input>
+                    </ion-item>
+                    <ion-item class="w-100 mb-3">
+                        <ion-label position="floating">Mobile</ion-label>
+                        <ion-input formControlName="mobile"></ion-input>
+                    </ion-item>
+                    <ion-item class="w-100 mb-3">
+                        <ion-label position="floating">Address</ion-label>
+                        <ion-textarea formControlName="address"></ion-textarea>
+                    </ion-item>
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            <ion-item class="w-100 mb-3">
+                                <ion-label position="floating">City</ion-label>
+                                <ion-input formControlName="city"></ion-input>
+                            </ion-item>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <ion-item class="w-100 mb-3">
+                                <ion-label position="floating">State</ion-label>
+                                <ion-input formControlName="state"></ion-input>
+                            </ion-item>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <ion-item class="w-100 mb-3">
+                                <ion-label position="floating">Pincode</ion-label>
+                                <ion-input formControlName="pincode"></ion-input>
+                            </ion-item>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    <div class="form-group">
+                        <button class="btn btn-block">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</ion-content>

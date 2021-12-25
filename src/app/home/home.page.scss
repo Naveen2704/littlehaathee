@@ -1,0 +1,28 @@
+.carousel-caption{
+    top:200px !important;
+}
+.carousel-item{
+    background-size: cover !important;
+    background-position: center;
+    height: 100vh;
+}
+.example-sidenav{
+    width: 350px;
+    height: 100vh;
+    position: fixed;
+    background: #fcfcfc;
+    box-shadow: 2px 2px 5px 5px #ececec;
+    overflow: hidden !important;
+}
+mat-sidenav-container{
+    z-index: 99999999;
+}
+.router-outlet{
+    background: #ebebeb;
+}
+.cart-bg{
+    --background-color: #efefef;
+}
+.toolbar-global-bg{
+    --background-color: #00003c !important;
+}

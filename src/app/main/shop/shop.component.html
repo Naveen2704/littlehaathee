@@ -1,0 +1,40 @@
+<ion-content>
+    <div class="container">
+        <h3 class="text-center my-5 py-3">ALL COLLECTIONS</h3>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="proDiv col-md-4 col-sm-12" *ngFor="let p of Cat_list">
+                <div class="thumbDiv">
+                    <img src="{{ p.menu_image }}" class="thumb">
+                    <div class="thumbContent deskView">
+                        <p class="proName">{{ p.menu_name }}</p>
+                        <!-- <p class="proPrice"><i class="fas fa-rupee-sign"></i> 675.00</p> -->
+                        <a routerLink="/products/{{ p.menu_id }}" class="proAction btn">VIEW</a>
+                    </div>
+                </div>
+            </div>
+            <div class="proDiv col-md-6 col-sm-12">
+                <div class="thumbDiv">
+                    <img src="assets/images/1.jpg" class="thumb">
+                    <div class="thumbContent deskView">
+                        <p class="proName">All Products</p>
+                        <!-- <p class="proPrice"><i class="fas fa-rupee-sign"></i> 675.00</p> -->
+                        <a routerLink="/products/all" class="proAction btn">VIEW</a>
+                    </div>
+                </div>
+            </div>
+            <div class="proDiv col-md-6 col-sm-12">
+                <div class="thumbDiv">
+                    <img src="assets/images/2.jpg" class="thumb">
+                    <div class="thumbContent deskView">
+                        <p class="proName">Under Rs.1000</p>
+                        <!-- <p class="proPrice"><i class="fas fa-rupee-sign"></i> 675.00</p> -->
+                        <a routerLink="/products/all" class="proAction btn">VIEW</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</ion-content>

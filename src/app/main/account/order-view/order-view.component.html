@@ -1,0 +1,39 @@
+<ion-content>
+  <div class="container">
+    <div class="row mt-4">
+      <div class="col-12">
+        <h4>#{{ tracking_id }}</h4>
+        <h6>Address Info</h6>
+        <p class="mb-1">{{ addressInfo.name }}</p>
+        <p class="mb-1">{{ addressInfo.mobile }}</p>
+        <p class="mb-1">{{ addressInfo.address }}</p>
+        <p class="mb-1">{{ addressInfo.city }}, {{ addressInfo.state }} - {{ addressInfo.pincode }}</p>
+      </div>
+      <div class="col-12" *ngFor="let p of orderInfo">
+        <div class="card mb-2">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-2">
+                <img [src]="p.product_image" alt="">
+              </div>
+              <div class="col-10">
+                <h4>{{ p.product_name }}
+                  <span class=" badge {{ (p.status == 'Delivered')?'badge-success':'badge-danger' }} font-weight-normal float-right text-capitalize">{{ p.status }}</span>
+                </h4>
+                <p class="mb-1">{{ p.category }}</p>
+                <p class="mb-1 ">QTY : {{ p.qty }}</p>
+                <p class="mb-1 font-weight-bold">Rs. {{ p.price*p.qty }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 text-center my-4">
+        <ion-button color="primary" routerLink="/account">Go Back to Orders</ion-button>
+      </div>
+
+    </div>
+    
+  </div>
+</ion-content>

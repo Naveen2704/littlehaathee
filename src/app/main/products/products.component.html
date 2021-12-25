@@ -1,0 +1,48 @@
+
+  <ion-content>
+        <div class="container" >
+            <div class="row">
+                <!-- <div class="col-md-2 col-lg-2">
+                    <div class="filters mt-5 p-3">
+                        <ion-chip class="p-2" color="danger" selected>
+                            <ion-label>Default</ion-label>
+                        </ion-chip>
+                    </div>                    
+                </div> -->
+                <div class="col-12 col-md-12">
+                    <div *ngIf="proList == null; then ifarea else nonifarea"></div>
+                    <ng-template #ifarea>
+                        <div class="row mt-3">
+                            <div class="col-6 col-md-3 my-2 text-center" *ngFor="let item of [].constructor(8); let i = index">
+                                <ngx-skeleton-loader count="1" appearance="line" [theme]="{height: '250px'}" ></ngx-skeleton-loader>
+                                <ngx-skeleton-loader count="1" appearance="line"></ngx-skeleton-loader>
+                                <ngx-skeleton-loader count="5" appearance="circle"></ngx-skeleton-loader>
+                                <ngx-skeleton-loader count="1" appearance="line" [theme]="{height: '40px'}"></ngx-skeleton-loader>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template #nonifarea>
+                        <div class="row">
+                            <div class="col-6 col-md-3 my-2 text-center" *ngFor="let p of proList;">
+                                <div class="card mb-2">
+                                    <a routerLink="/single/{{ p.product_id }}" >
+                                        <img [src]="p.product_image" alt="" class="card-img-top">
+                                    </a>
+                                    <div class="card-body px-0 py-0 pt-1">
+                                        <h5>{{ p.product_name }}</h5>
+                                        <p class="font-weight-bold">Rs. {{ p.price }}</p>
+                                        <p><i class="fas fa-circle mx-2 shadow border" *ngFor="let c of p.colors" [ngStyle]="{'font-size':'25px','color': c,'border-radius':'50%'}"></i></p>
+                                        <button class="btn btn-block" (click)="addCart(p.product_id, p.stock_id)">Add TO cart</button>        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+            
+        </div>
+      
+    <app-footer></app-footer>
+      </ion-content>
+      

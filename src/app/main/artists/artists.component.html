@@ -1,0 +1,17 @@
+<ion-content>
+    <div class="container">
+        <h4 class="text-center text-uppercase">Artists</h4>
+        <div class="row justify-content-center my-5">
+            <div class="proDiv col-md-4 col-12" *ngFor="let p of list; let i = index;">
+                <div class="thumbDiv">
+                    <img src="{{ p.image }}" class="thumb">
+                    <div class="thumbContent">
+                        <p class="proName">{{ p.artist_name }}</p>
+                        <a routerLink="/artistview/{{ p.artist_id }}" class="proAction btn">VIEW</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</ion-content>

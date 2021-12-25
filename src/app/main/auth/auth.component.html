@@ -1,0 +1,31 @@
+<ion-content>
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-4 col-12">
+                <h4 class="text-center my-3">LOGIN</h4>
+                <p class="text-center">Please enter your user credentials</p>
+                <form [(formGroup)]="loginForm" (ngSubmit)="loginSubmit()">
+                    <ion-item class="w-100 mb-3">
+                        <ion-label position="floating">Email ID or Mobile</ion-label>
+                        <ion-input type="text" formControlName="email"></ion-input>
+                    </ion-item>
+                    <ion-item class="w-100 mb-3">
+                        <ion-label position="floating">Password</ion-label>
+                        <ion-input type="password" formControlName="password"></ion-input>
+                    </ion-item>
+                    <!-- <div class="form-group">
+                        <label for="">Email ID Or Mobile</label>
+                        <input type="text" formControlName="email" autocomplete="new-email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Password</label>
+                        <input type="password" formControlName="password" autocomplete="new-password" class="form-control">
+                    </div> -->
+                    <button class="btn-block btn app-btn">Submit</button>
+                </form>
+                <p class="text-center mt-5 font-weight-normal">Don't have an account? <a [routerLink]="['/register']" class="font-weight-bold">Create One</a></p>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</ion-content>

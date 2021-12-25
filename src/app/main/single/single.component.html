@@ -1,0 +1,142 @@
+
+<ion-content>
+
+    <div class="modal fade" role="dialog" id="artistModal" data-backdrop="static" >
+        <div class="modal-dialog" >
+            <div class="modal-content" style="z-index: 99999;">
+                <div class="modal-header py-3 px-3">
+                    <button class="close" data-dismiss="modal" style="margin-top: -35px;">&times;</button>
+                    <h4 class="modal-title m-0">Artist Info</h4>
+                </div>
+                <div class="modal-body" *ngFor="let artist of artist">
+                    <div class="row">
+                        <div class="col-3">
+                            <img [src]="artist.artist_image" alt="" class="rounded-circle">
+                        </div>
+                        <div class="col-9">
+                            <h5>{{ artist.artist_name }}</h5>
+                        </div>
+                        <div class="col-12">
+                            <p>{{ artist.description }}</p>
+                        </div>
+                        <div class="col-12">
+                            <!-- <iframe width="100%" height="250" src="{{ artist.video_link }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div *ngIf="proList == null; then ifarea else nonifarea"></div>
+    <ng-template #ifarea>
+        <div class="container">
+            <div class="row mt-3">
+                <div class="col-12 col-md-6 my-2 text-center">
+                    <ngx-skeleton-loader count="1" appearance="line" [theme]="{height: '450px'}" ></ngx-skeleton-loader>
+                </div>
+                <div class="col-12 col-md-6 my-2">
+                    <ngx-skeleton-loader count="1" appearance="line" [theme]="{height: '25px'}" ></ngx-skeleton-loader>
+                    <ngx-skeleton-loader count="1" appearance="line" [theme]="{height: '25px', width: '200px'}" ></ngx-skeleton-loader><br>
+                    <ngx-skeleton-loader count="1" appearance="line" [theme]="{height: '25px', width: '100px'}" ></ngx-skeleton-loader><br>
+                    <ngx-skeleton-loader count="1" appearance="circle" [theme]="{height: '50px', width: '50px'}" ></ngx-skeleton-loader><br>
+                    <ngx-skeleton-loader count="1" appearance="line" [theme]="{height: '100px'}" ></ngx-skeleton-loader><br>
+                    <ngx-skeleton-loader count="1" appearance="line" [theme]="{height: '25px', width: '100px'}" ></ngx-skeleton-loader><br>
+                    <ngx-skeleton-loader count="1" appearance="line" [theme]="{height: '25px', width: '100px'}" ></ngx-skeleton-loader><br>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template #nonifarea>
+ 
+        <div class="container mt-3" *ngFor="let p of proList">
+            <div class="row">
+                <div class="col-12 col-md-6 text-center">
+                    <div class="row">
+                        <div class="col-2 p-0  d-none d-lg-block d-md-block">
+                            <img [src]="p.product_image" alt="" class="mb-2 proIcon" (click)="changeImg(p.product_image)">
+                            <img [src]="imageUrl + img" *ngFor="let img of additional_images" class="mb-2 proIcon" (click)="changeImg(imageUrl + img)" alt="">    
+                        </div>
+                        <div class="col-10  d-none d-lg-block d-md-block">
+                            <img [src]="featuredImage" alt="" class="w-100">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12 mb-3 d-lg-none d-md-none">
+                            <ion-slides pager>
+                                <ion-slide>
+                                    <img [src]="p.product_image" alt="">
+                                </ion-slide>
+                                <ion-slide *ngFor="let img of additional_images" >
+                                    <img [src]="imageUrl + img" alt="">
+                                </ion-slide>
+                            </ion-slides>
+                        </div>
+                        <div class="col-6">
+                            <button class="btn btn-block app-btn" (click)="addCart(p.product_id, p.stock_id)">ADD TO CART</button>
+                        </div>
+                        <div class="col-6">
+                            <button class="btn btn-block app-btn">BUY NOW</button>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <h2 class="mt-2 pt-2">{{ p.product_name }}</h2>
+                    <p>SKU: {{ p.sku_code }}</p>
+                    <h6>ART BY</h6>
+                    <div class="row">
+                        <div class="col-2">
+                            <img [src]="p.artist_image" class="rounded-circle" alt="">
+                        </div>
+                        <div class="col-10 m-auto">
+                            <h5 class="mt-0">{{ p.artist_name }}</h5>
+                            <p>
+                                <button class="say_hello" data-toggle="modal" data-target="#artistModal">Say Hello</button>
+                            </p>
+                        </div>
+                    </div>
+                    <p class="mt-3 font-weight-bold">Rs. {{ p.sp_price }}</p>
+                    <p>{{ p.description }}</p>
+                    <p class="font-weight-bold mb-0">Colors:</p>
+                    <div class="d-flex">
+                        <span class="card p-2 px-3 card-info mr-2 proIcon"  *ngFor="let c of p.available_colors" (click)="colorImages(p.product_id, c)"  [ngStyle]="{'background-color': c}"></span>
+                    </div>
+                    <p class="font-weight-bold mt-2">Sizes:</p>
+                    <div class="d-flex">
+                        <ion-chip color="danger" class="px-3 mr-1" *ngFor="let s of p.available_sizes">
+                            <ion-label>{{ s }}</ion-label>
+                        </ion-chip>
+                    </div>
+                    <hr>
+    
+                    
+                    
+                    
+                </div>
+            </div>
+    
+            <h3 class="pb-4 border-bottom">YOU MAY ALSO LIKE</h3>        
+            <div class="row">
+                <div class="proDiv col-md-3 col-6" *ngFor="let p of relatedList">
+                    <a routerLink="/single/{{ p.product_id }}" (click)="singlePro(p.product_id)">
+                        <div class="card shadow mb-2">
+                            <img [src]="p.product_image" alt="" class="card-img-top">
+                            <div class="card-body">
+                                <h5>{{ p.product_name }}</h5>
+                                <p class="font-weight-bold">Rs. {{ p.price }}</p>
+                                <p><i class="fas fa-circle mx-2 shadow border" *ngFor="let c of p.colors" [ngStyle]="{'font-size':'25px','color': c,'border-radius':'50%'}"></i></p>
+                                <!-- <button class="btn btn-block app-btn">Add TO cart</button>         -->
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+    
+        </div>
+    </ng-template>
+   
+
+    <app-footer></app-footer>
+</ion-content>

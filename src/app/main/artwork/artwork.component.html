@@ -1,0 +1,12 @@
+<ion-content>
+    <div class="container mt-3">
+        <h4 class="text-center mb-4">Artworks</h4>
+        <div class="row">
+            <div class="col-md-2 col-6 mb-3 text-center artwork_div" *ngFor="let p of artworkInfo">
+                <a routerLink="/artworkView/{{ p.artwork_id }}" class="text-center mb-2">
+                    <img [src]="p.image" alt="" class="shadow">
+                </a>
+            </div>
+        </div>
+    </div>
+</ion-content>

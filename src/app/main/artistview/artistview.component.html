@@ -1,0 +1,52 @@
+<ion-content>
+    <div class="container mt-3">
+        <div *ngIf="(artistInfo == null); then ifart else noart"></div>
+        <ng-template #ifart>
+            <div class="row">
+                <div class="col-md-3 col-12">
+                    <ngx-skeleton-loader count="1" appearance="line" [theme]="{height: '250px'}" ></ngx-skeleton-loader>
+                </div>
+                <div class="col-md-9 col-12">
+                    <ngx-skeleton-loader count="1" appearance="line" [theme]="{height: '35px',width: '250px'}"></ngx-skeleton-loader>
+                    <ngx-skeleton-loader count="1" appearance="line" [theme]="{height: '150px'}"></ngx-skeleton-loader>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template #noart>
+            <div class="row">
+                <div class="col-md-3 col-12">
+                    <img [src]="artistInfo.artist_image" class="shadow rounded-circle" alt="">
+                </div>
+                <div class="col-md-9 col-12">
+                    <h5>{{ artistInfo.artist_name }}</h5>
+                    <p>{{ artistInfo.description }}</p>
+                    <iframe width="80%" height="400" src="https://www.youtube.com/embed/oV74Najm6Nc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="row justify-content-around">
+                <div class="col-8 text-center">
+                    <!-- <iframe width="560" height="315" src="{{ safeUrl }}"  frameborder="0" allowfullscreen></iframe> -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h5 class="pb-2 border-bottom">Products Designed By {{ artistInfo.artist_name }}</h5>
+                </div>
+                <div class="col-6 col-md-3 my-2 text-center" *ngFor="let p of productInfo;">
+                    <a routerLink="/single/{{ p.product_id }}" >
+                        <div class="card mb-2">
+                            <img [src]="p.product_image" alt="" class="card-img-top">
+                            <div class="card-body px-0 py-0 pt-1">
+                                <h5>{{ p.product_name }}</h5>
+                                <p class="font-weight-bold">Rs. {{ p.price }}</p>
+                                <p><i class="fas fa-circle mx-2 shadow border" *ngFor="let c of p.colors" [ngStyle]="{'font-size':'25px','color': c,'border-radius':'50%'}"></i></p>
+                                <button class="btn btn-block">Add TO cart</button>        
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </ng-template>
+        
+    </div>
+</ion-content>

@@ -1,0 +1,118 @@
+<ion-app>
+    <ion-header [translucent]="true" fullscreen>
+        <ion-toolbar>
+            <div class="container-fluid text-center w-100">
+                <!-- <div class="my-auto"> -->
+                    <ion-buttons slot="start" class="mobile-menu float-left">
+                        <ion-menu-button class="p-2"></ion-menu-button>
+                    </ion-buttons>
+                <!-- </div> -->
+                <a [routerLink]="['/home']"  class="my-auto">
+                    <img src="assets/images/logoDark.png" alt="" class="my-logo">
+                </a>
+            </div>
+            <div class="container text-center d-none d-lg-block d-md-block">
+                <ul class="ml-auto justify-content-center my-menu my-auto">
+                    <li class="d-none d-lg-block d-md-block"><a [routerLink]="['/home']"><ion-icon name="home"></ion-icon></a></li>
+                    <li class="d-none d-lg-block d-md-block" *ngFor="let p of menuList"><a routerLink="/products/{{ p.menu_id }}" >{{ p.menu_name }}</a></li>
+                    <li class="d-none d-lg-block d-md-block"><a class="current" [routerLink]="['/artwork']">ArtWork</a></li>
+                    <li class="d-none d-lg-block d-md-block"><a [routerLink]="['/artists']">Artists</a></li>
+                    <div *ngIf="(UserInfo === null); then ifarea else nonifarea"></div>
+                    <ng-template #ifarea>
+                        <li class="px-2 d-none d-lg-block d-md-block"><a [routerLink]="['/auth']"><ion-icon name="cart-outline"></ion-icon></a></li>
+                        <li class="px-2 d-none d-lg-block d-md-block"><a [routerLink]="['/auth']"><ion-icon name="person-circle-outline"></ion-icon></a></li>
+                    </ng-template>
+                    <ng-template #nonifarea>
+                        <li class="px-2 d-none d-lg-block d-md-block"><a (click)="sidenav.toggle(); getCart()"><ion-icon name="cart-outline"></ion-icon></a></li>
+                        <li class="px-2 d-none d-lg-block d-md-block" ><a [routerLink]="['/account']"><ion-icon name="person-circle-outline"></ion-icon></a></li>
+                        <li class="px-2 d-none d-lg-block d-md-block"><a (click)="logout()"><ion-icon name="log-out-outline"></ion-icon></a></li>
+                    </ng-template>
+                </ul>
+            </div>
+        </ion-toolbar>
+    </ion-header>
+        
+    <ion-content (click)="sidenav.close()">
+        <ion-split-pane contentId="content" when="(min-width:1920px)">
+    
+            <ion-menu>
+                <ion-content>
+                    <ion-list class="menu-gradient" lines="none">
+                        <ion-menu-toggle auto-hide="false">
+                            <ion-item *ngFor="let p of menuList"  routerLink="/products/{{ p.menu_id }}">
+                                <ion-label>{{ p.menu_name }}</ion-label>
+                            </ion-item>
+                            <ion-item [routerLink]="['/artwork']">
+                                <ion-label>ArtWork</ion-label>
+                            </ion-item>
+                            <ion-item [routerLink]="['/artists']">
+                                <ion-label>Artists</ion-label>
+                            </ion-item>
+                            <div *ngIf="(UserInfo === null); then mobifarea else mobnonifarea"></div>
+                            <ng-template #mobifarea>
+                                <ion-item [routerLink]="['/auth']">
+                                    <ion-label>Login / Signup</ion-label>
+                                </ion-item>
+                            </ng-template>
+                            <ng-template #mobnonifarea>
+                                <ion-item [routerLink]="['/account']">
+                                    <ion-label>My Account</ion-label>
+                                </ion-item>
+                                <ion-item (click)="logout()">
+                                    <ion-label>Logout</ion-label>
+                                </ion-item>
+                                <ion-item (click)="sidenav.toggle(); getCart()">
+                                    <ion-label>Cart</ion-label>
+                                </ion-item>
+                            </ng-template>
+                        </ion-menu-toggle>
+                    </ion-list>
+                </ion-content>
+    
+            </ion-menu>
+            
+    
+            <!-- <ion-content> -->
+                <ion-router-outlet id="content" main class="router-outlet"></ion-router-outlet>
+            <!-- </ion-content> -->
+            
+        </ion-split-pane>
+        <!-- <router-outlet id="content" swipeBackEnabled="false"></router-outlet> -->
+    </ion-content>
+</ion-app>
+
+<mat-sidenav-container class="example-container" >
+	<mat-sidenav #sidenav class="example-sidenav"  position="end">
+        <!-- <ion-content class="cart-bg"> -->
+            <div class="container-fluid" style="height: 99%;">
+                <h4 class="border-bottom pb-3">CART</h4>
+                <div class="row mb-2" *ngFor="let p of cartItems;let i = index;">
+                    <div class="col-4">
+                        <img [src]="p.product_image" alt="">
+                    </div>
+                    <div class="col-8">
+                        <h6 class="mt-1">{{ p.product_name }} 
+                            <ion-button class="float-right" size="small" color="danger" (click)="removeCart(p.cart_id)"><ion-icon name="close-circle-outline"></ion-icon></ion-button>
+                        </h6>
+                        <p class="mb-1">Rs. {{ p.sp_price }}</p>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-danger btn text-white" (click)="minus(i)"><i class="fas fa-minus"></i></span>
+                            </div>
+                            <input type="text" class="qty border w-25" readonly value="{{ p.qty }}" (keypress)="numeric($event)">
+                            <div class="input-group-append">
+                                <span class="input-group-text bg-success btn text-white" (click)="plus(i)" ><i class="fas fa-plus"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="z-index: 99999">
+                    <div class="col-md-12 btn-bottom">
+                        <button class="btn btn-block" [routerLink]="['/checkout']" (click)="sidenav.close()"> Checkout - {{ total }} </button>
+                    </div>
+                </div>
+            </div>
+        <!-- </ion-content> -->
+	</mat-sidenav>
+
+</mat-sidenav-container>

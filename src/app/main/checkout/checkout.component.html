@@ -1,0 +1,69 @@
+<ion-content>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="py-2 border-bottom">
+                    CHECKOUT
+                </h4>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Image</th>
+                                <th>Product Name</th>
+                                <th>Category</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngIf="cartItems.length === 0">
+                                <td colspan="6">
+                                    <p class="mb-2 text-center">No Items Found. Keep Shopping.</p>
+                                </td>
+                            </tr>
+                            <tr *ngFor="let p of cartItems;let i = index">
+                                <td>{{ i+1 }}</td>
+                                <td class="text-center"><img [src]="p.product_image" alt="" class="rounded-circle" style="width: 40px;"></td>
+                                <td>{{ p.product_name }}</td>
+                                <td>{{ p.category }}</td>
+                                <td style="width:20%">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text bg-danger text-white" (click)="minus(i)"><i class="fas fa-minus"></i></span>
+                                        </div>
+                                        <input type="text" class="qty border w-25" readonly value="{{ p.qty }}" (keypress)="numeric($event)">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text bg-success text-white" (click)="plus(i)" ><i class="fas fa-plus"></i></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Rs. {{ (p.sp_price != 0)?p.sp_price:p.price }}</td>
+                                <td>
+                                    <ion-button (click)="removeCart(p.cart_id)" color="danger">&times;</ion-button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="5" class="text-right">
+                                    <span class="font-weight-bold">Total</span>
+                                </td>
+                                <td>
+                                    <span class="font-weight-bold">Rs. {{ total }}</span>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-2 col-6">
+                        <button class="btn app-btn btn-block" (click)="place_order()">Place Order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</ion-content>

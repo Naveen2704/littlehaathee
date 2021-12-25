@@ -1,0 +1,43 @@
+<ion-content>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="text-center artwork_div">
+            <img [src]="artworkList.image" alt="" class="shadow">
+        </div>
+      </div>
+      <div class="col-md-9">
+        <h4>{{ artworkList.title }}</h4>
+        <p>{{ artworkList.description }}</p>
+        <h6 class="bg-light border p-2 mb-0">Artist Info</h6>
+        <div class="row">
+          <div class="col-md-3">
+            <img [src]="artistInfo.artist_image" alt="" class="shadow">
+          </div>
+          <div class="col-md-9">
+            <h6>{{ artistInfo.artist_name }}</h6>
+            <p>{{ artistInfo.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+          <h5 class="pb-2 border-bottom">Products Designed By This ArtWork</h5>
+      </div>
+      <div class="col-6 col-md-3 my-2 text-center" *ngFor="let p of productInfo;">
+          <a routerLink="/single/{{ p.product_id }}" >
+              <div class="card mb-2">
+                  <img [src]="p.product_image" alt="" class="card-img-top">
+                  <div class="card-body px-0 py-0 pt-1">
+                      <h5>{{ p.product_name }}</h5>
+                      <p class="font-weight-bold">Rs. {{ p.price }}</p>
+                      <p><i class="fas fa-circle mx-2 shadow border" *ngFor="let c of p.colors" [ngStyle]="{'font-size':'25px','color': c,'border-radius':'50%'}"></i></p>
+                      <button class="btn btn-block">Add TO cart</button>        
+                  </div>
+              </div>
+          </a>
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,316 @@
+ <!-- <ion-content> -->
+    <!-- <ion-header>
+        <ion-toolbar class="transparent-toolbar fixed-top"> -->
+            <div class="menu-wrap w-100">
+                <div class="row mx-auto mobCartIcons">
+                    <div class="col"></div>
+                    <div class="col-auto tblBlock">
+                        <ul class="cartIcons">
+                            <div *ngIf="(UserInfo === null); then ifarea else nonifarea"></div>
+                            <ng-template #ifarea>
+                                <li><img src="assets/images/icons/user_icon.png" alt="" title="Login" [routerLink]="['/auth']"></li>
+                                <li><img src="assets/images/icons/bag_icon.png" alt="" title="Cart" [routerLink]="['/auth']"></li>
+                            </ng-template>
+                            <ng-template #nonifarea>
+                                <li class="px-2"><img src="assets/images/icons/user_icon.png" alt="" title="My Account" [routerLink]="['/account']"></li>
+                                <!-- <li class="px-2"><img src="assets/images/icons/bag_icon.png" alt="" [routerLink]="['/auth']"></li> -->
+                                <!-- <li class="px-2" ><a [routerLink]="['/account']"><ion-icon name="person-circle-outline"></ion-icon></a></li> -->
+                                <!-- <li class="px-2"><a (click)="logout()"><ion-icon name="log-out-outline"></ion-icon></a></li> -->
+                            </ng-template>
+                        </ul>
+                    </div>
+                </div>
+                <input type="checkbox" class="toggler">
+                <div class="hamburger">
+                    <div></div>
+                </div>
+        
+                <div class="menu">
+                    <div>
+                        <div>
+                            <ul>
+                                <li class="brand"><img src="{{ appInfo.whiteLogo }}"></li>
+                                <li><a [routerLink]="['/about']">About</a></li>
+                                <li *ngFor="let p of menus"><a routerLink="/products/{{p.menu_id}}">{{ p.menu_name }}</a></li>
+                                <!-- <li><a [routerLink]="['/shop']">Shop</a></li> -->
+                                <li><a [routerLink]="['/artwork']">ArtWork</a></li>
+                                <li><a [routerLink]="['/artists']">Artists</a></li>
+                                <!-- <li><a [routerLink]="['/contact']">Contact</a></li> -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section id="header" class="main-nav">
+                <div class="container-fluid">
+                    <!-- <ion-title>
+                        <ion-buttons slot="start">
+                            <ion-menu-button></ion-menu-button>
+                        </ion-buttons>
+                    </ion-title> -->
+                    <nav class="navbar navbar-expand-lg navbar-dark">
+                        <div class="container text-right">
+                            <a class="navbar-brand" href="#"></a>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav home-menu ml-auto justify-content-center">
+                                    <li class="nav-item"><a class="nav-link" [routerLink]="['/about']">About</a></li>
+                                    <li *ngFor="let p of menus" class="nav-item"><a routerLink="/products/{{p.menu_id}}" class="nav-link">{{ p.menu_name }}</a></li>
+                                    <!-- <li class="nav-item"><a [routerLink]="['/shop']" class="nav-link">Shop</a></li> -->
+                                    <li class="nav-item"><a [routerLink]="['/artwork']" class="nav-link">ArtWork</a></li>
+                                    <li class="nav-item"><a [routerLink]="['/artists']" class="nav-link">Artists</a></li>
+                                    <!-- <li class="nav-item"><a [routerLink]="['/contact']" class="nav-link">Contact</a></li> -->
+                                </ul>
+                                <ul class="cartIcons d-flex">
+                                    <li class="px-2">
+                                        <img src="assets/images/icons/user_icon.png" title="Login" alt="" [routerLink]="['/auth']">
+                                    </li>
+                                    <li class="px-2">
+                                        <img src="assets/images/icons/bag_icon.png" alt=""  (click)="sidenav.toggle(); getCart()" title="Cart" >
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </section>
+              
+        <!-- </ion-toolbar>
+      </ion-header> -->
+
+ <!-- </ion-content> -->
+
+ <ion-content  (click)="sidenav.close()">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" >
+        <div class="carousel-inner" >
+            <div class="carousel-item {{ (i === 0)?'active':''}}" *ngFor="let slide of images; let i=index" style="background-image:url(assets/images/{{slide}})">
+                <div class="landingBG"></div>
+                <div class="carousel-caption">
+                    <div class="row mx-auto ml-5">
+                        <div class="mt-5 ml-5 pt-5 col-lg-6 col-md-8 col-sm-10 col-xs-10 col-10 offset-lg-1 offset-md-1 offset-sm-1 offset-xs-1 offset-1 logo">
+                            <img src="assets/images/logoWhite.png" alt="Little Haathee Logo" title="Little Haathee">
+                            <p>Printed tees are the trend and now it would come with a purpose, a purpose to
+                                appreciate/support a little kid’s mind and creativity</p>
+                            <a [routerLink]="['/shop']" class="btn">SHOPEE TEES</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    
+<section class="featured">
+    <div class="container-fluid">
+        <div class="row title">
+            <div class="col-lg-12">
+                <h2>All Collections</h2>
+                <p class="context">Shop the latest trends &amp; styles</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="proDiv col-md-4 col-sm-12" *ngFor="let p of catList">
+                <div class="thumbDiv">
+                    <img src="{{ p.menu_image }}" class="thumb">
+                    <div class="thumbContent">
+                        <p class="proName">{{ p.menu_name }}</p>
+                        <!-- <p class="proPrice"><i class="fas fa-rupee-sign"></i> 675.00</p> -->
+                        <a routerLink="/products/{{ p.menu_id }}" class="proAction btn">VIEW</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row title">
+            <div class="col-lg-12">
+                <h2>NEW Arrivals</h2>
+                <p class="context">Shop the latest </p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-4 my-2 text-center" *ngFor="let p of proList;">
+                    <a routerLink="/single/{{ p.product_id }}">
+                        <div class="card border">
+                            <img src="{{ p.product_image }}" alt="" class="card-img-top">
+                            <h4>{{ p.product_name }}</h4>
+                            <p class="font-weight-bold">Rs. {{ (p.sp_price != 0)?p.sp_price:p.price }} <strike *ngIf="p.sp_price != 0">Rs. {{ p.price }}</strike></p>
+                            <p><i class="fas fa-circle mx-2 shadow border" *ngFor="let c of p.colors" [ngStyle]="{'font-size':'25px','color': c,'border-radius':'50%'}"></i></p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="process">
+    <div class="container">
+        <div class="row title">
+            <div class="col-lg-12 text-center">
+                <h2>Our Process</h2>
+                <p class="context">Shop the latest trends &amp; styles</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-md-12 offset-lg-2 center">
+                <div class="iframe-container">
+                    <iframe width="800" height="451" src="https://www.youtube-nocookie.com/embed/MkH_BPL2pyE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6 col-md-12 tblBlock ourStory">
+            <div class="mobContent">
+                <div class="vitals text-center">
+                    <h3>{{ story.title }}</h3>
+                    <p>{{ story.description }}</p>
+                    <a href="#" class="btn" [routerLink]="['/about']">Know our Story</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-12 vitals tblBlock deskContent">
+            <div class="text-center">
+                <h3>{{ story.title }}</h3>
+                <p>{{ story.description }}</p>
+                <a href="#" class="btn" [routerLink]="['/about']">Know our
+                    Story</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6 vitals tblBlock deskContent">
+            <div class="text-center">
+                <h3 class="d-block">{{ feeding.title }}</h3>
+                <p>{{ feeding.description }}</p>
+                <a href="#" class="btn" [routerLink]="['/about']">Know our
+                    Story</a>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-12 tblBlock feedingCreativity">
+            <div class="mobContent">
+                <div class="vitals text-center">
+                    <h3 class="d-block">{{ feeding.title }}</h3>
+                    <p>{{ feeding.description }}</p>
+                    <a href="#" class="btn" [routerLink]="['/about']">Know our Story</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6 col-md-12 tblBlock socialEnterprise">
+            <div class="mobContent">
+                <div class="vitals text-center">
+                    <h3 class="d-block">{{ social.title }}</h3>
+                    <p>{{ social.description }}</p>
+                    <a href="#" class="btn" [routerLink]="['/about']">Know our Story</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 vitals tblBlock deskContent">
+            <div class="text-center">
+                <h3 class="d-block">{{ social.title }}</h3>
+                <p>{{ social.description }}</p>
+                    <a href="#" class="btn" [routerLink]="['/about']">Know our Story</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid tblBlock digitals">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-sm-4">
+                <div class="text-center scroller">
+                    <span class='numscroller' data-min='1' data-max='15000' data-delay='2' data-increment='100'>15000</span><br>
+                    <p>SALES</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-sm-4">
+                <div class="text-center scroller">
+                    <span class='numscroller' data-min='1' data-max='208' data-delay='2' data-increment='5'>208</span><br>
+                    <p>Products</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-sm-4 noBdr">
+                <div class="text-center scroller">
+                    <span class='numscroller' data-min='1' data-max='18' data-delay='1' data-increment='1'>18</span><br>
+                    <p>Artists</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="footer">
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <p>littlehaathee.com &copy; 2020</p>
+                </div>
+                <!-- <div class="col text-right">
+                        Powered by Beaut Infolore
+                </div> -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- 
+        </div>
+    </div> -->
+    <!-- <app-footer></app-footer> -->
+ </ion-content>
+
+ <mat-sidenav-container class="example-container" >
+     <mat-sidenav #sidenav class="example-sidenav"  position="end">
+         <!-- <ion-content class="cart-bg"> -->
+             <div class="container-fluid" style="height: 99%;">
+                 <h4 class="border-bottom pb-3">CART</h4>
+                 <div class="row mb-2" *ngFor="let p of cartItems;let i = index;">
+                     <div class="col-4">
+                         <img [src]="p.product_image" alt="">
+                     </div>
+                     <div class="col-8">
+                         <h6 class="mt-1">{{ p.product_name }} 
+                             <ion-button class="float-right" size="small" color="danger" (click)="removeCart(p.cart_id)"><ion-icon name="close-circle-outline"></ion-icon></ion-button>
+                         </h6>
+                         <p class="mb-1">Rs. {{ p.sp_price }}</p>
+                         <div class="input-group">
+                             <div class="input-group-prepend">
+                                 <span class="input-group-text bg-danger btn text-white" (click)="minus(i)"><i class="fas fa-minus"></i></span>
+                             </div>
+                             <input type="text" class="qty border w-25" readonly value="{{ p.qty }}" (keypress)="numeric($event)">
+                             <div class="input-group-append">
+                                 <span class="input-group-text bg-success btn text-white" (click)="plus(i)" ><i class="fas fa-plus"></i></span>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="row" style="z-index: 99999">
+                     <div class="col-md-12 btn-bottom">
+                         <button class="btn btn-block" [routerLink]="['/checkout']" (click)="sidenav.close()"> Checkout - {{ total }} </button>
+                     </div>
+                 </div>
+             </div>
+         <!-- </ion-content> -->
+     </mat-sidenav>
+ 
+ </mat-sidenav-container>

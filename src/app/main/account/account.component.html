@@ -1,0 +1,117 @@
+<ion-content>
+    <div class="container mt-3">
+        <!-- <h5 class="border-bottom pb-3"><i class="fas fa-user-alt"></i> Welcome! {{ userInfo.username }}</h5> -->
+        <ion-segment (ionChange)="segmentChanged($event)" color="tertiary" value="orders" scrollable="true" swipe-gesture="true" class="bg-light text-center">
+            <ion-segment-button value="orders">
+              <ion-label>
+                ORDERS
+              </ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="profile">
+              <ion-label>
+                Profile
+              </ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="address">
+              <ion-label>
+                Address
+              </ion-label>
+            </ion-segment-button>
+          </ion-segment>
+          <div class="animate__animated animate__slideInUp animate__fast p-4" *ngIf="segment === 'orders'">
+            <div class="row">
+                <div class="col-12" *ngIf="(orders.length === 0)">
+                    <p class="text-center mb-2">No orders found. Keep shopping.</p>
+                </div> 
+                <div class="col-md-4 col-6" *ngFor="let p of orders">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4>#{{ p.tracking_id }}</h4>
+                            <p class="mb-1">Rs.{{ p.price }}</p>
+                            <p class="mb-1">Qty: {{ p.qty }} <span class="badge">{{ p.status }}</span></p>
+                            <p class="mb-1">Generated On {{ p.created_date_time }}</p>
+                        </div>
+                        <div class="card-footer p-0">
+                            <ion-button expand="block" routerLink="/orderView/{{ p.tracking_id }}" color="primary">View Order Info</ion-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="animate__animated animate__slideInUp animate__fast p-4" *ngIf="segment === 'profile'">
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-12">
+                    <h5 class="pb-2 border-bottom">Profile Details</h5>
+                    <form [formGroup]="updateProfileForm" (ngSubmit)="changeProfile()">
+                        <ion-item class="w-100 mb-3">
+                            <ion-label position="floating">Name</ion-label>
+                            <ion-input type="text" formControlName="name" [(ngModel)]="profileInfo.name"></ion-input>
+                        </ion-item>
+                        <ion-item class="w-100 mb-3">
+                            <ion-label position="floating">Mobile</ion-label>
+                            <ion-input type="text" formControlName="mobile" [(ngModel)]="profileInfo.mobile"></ion-input>
+                        </ion-item>
+                        <ion-item class="w-100 mb-3">
+                            <ion-label position="floating">Email</ion-label>
+                            <ion-input type="text" formControlName="email" [(ngModel)]="profileInfo.email"></ion-input>
+                        </ion-item>
+                        <button class="btn app-btn w-25">Submit</button>
+                    </form>
+                </div>
+                <div class="col-md-6 col-12">
+                    <h5 class="pb-2 border-bottom">Change Password</h5>
+                    <form [formGroup]="updatePassword" autocomplete="off" (ngSubmit)="changePassword()">
+                        <ion-item class="w-100 mb-3">
+                            <ion-label position="floating">Old Password</ion-label>
+                            <ion-input type="password" autocomplete="new-password" formControlName="old"></ion-input>
+                        </ion-item>
+                        <ion-item class="w-100 mb-3">
+                            <ion-label position="floating">New Password</ion-label>
+                            <ion-input type="password" autocomplete="new-password" formControlName="password"></ion-input>
+                        </ion-item>
+                        <button class="btn app-btn w-25">Submit</button>
+                    </form>
+                </div>
+            </div>
+          </div>
+          <div class="animate__animated animate__slideInUp animate__fast p-4" *ngIf="segment === 'address'">
+             <div class="row">
+                 <div class="col-12">
+                     <h4 class="font-weight-bold pb-3 border-bottom">Address List <ion-button color="primary" class="float-right btn-sm small" (click)="addAddress()">Add Address</ion-button></h4>
+                 </div>
+             </div> 
+            <div class="row">
+                <!-- <div *ngIf="(address == null); then ifad else nonifad"></div> -->
+                <div class="col-12" *ngIf="(orders == null)">
+                    <p class="text-center mb-2">No address found</p>
+                </div> 
+                <div class="col-md-4" *ngFor="let p of address">
+                    <ion-card class="mb-3">
+                        <ion-card-content>
+                            <h2 class="text-capitalize font-weight-bold">{{ p.name }}</h2>
+                            <p class="mb-2">{{ p.address }}</p>
+                            <p class="mb-2">{{ p.mobile }}</p>
+                            <p class="mb-2">{{ p.city }},{{ p.state }} - {{ p.pincode }}</p>
+                        </ion-card-content>
+                        <!-- <ion-card-footer> -->
+                            <div class="row">
+                                <div class="col-6 p-0">
+                                    <ion-button class="btn-block small" color="primary" (click)="editAddress(p)">Edit Address</ion-button>
+                                </div>
+                                <div class="col-6 p-0">
+                                    <ion-button class="btn-block small" color="danger" (click)="delAddress(p.address_id)">Delete Address</ion-button>
+                                </div>
+                            </div>
+                        <!-- </ion-card-footer> -->
+                    </ion-card>
+                    <!-- <div class="card">
+                        <div class="card-body">
+                            
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+          </div>
+    </div>
+    <app-footer></app-footer>
+</ion-content>
