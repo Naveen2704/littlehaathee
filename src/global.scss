@@ -68,9 +68,9 @@ ion-content{
 }
 .app-btn{
     padding: 10px 0  !important;
-    background: #00003c !important;
+    background: #2596be !important;
     color: #fff;
-    // box-shadow: 1px 1px 10px 0px #00003c !important;
+    // box-shadow: 1px 1px 10px 0px #2596be !important;
 }
 
 .home-menu li a{
@@ -83,15 +83,15 @@ ion-content{
 
 // .btn{
 //     border-radius: 0px !important;
-//     background: #00003c !important;
+//     background: #2596be !important;
 //     color: #fff;
 //     padding: 10px 50px !important;
 // }
 
 // .btn:hover{
 //     background: transparent !important;
-//     color: #00003c !important;
-//     border: 1px solid #00003c;
+//     color: #2596be !important;
+//     border: 1px solid #2596be;
 // }
 
 // button,
@@ -131,8 +131,8 @@ ion-content{
 }
 .btn {
 	color: #FFF ;
-    background: #00003c !important;
-    padding: 10px !important;
+    background: #2596be !important;
+    padding: 10px 20px !important;
     border-radius: 0px !important;
 	transition: all 0.5s;
 	position: relative;
@@ -149,15 +149,15 @@ ion-content{
 	transition: all 0.6s;
 }
 .btn:hover{
-    color: #00003c !important;
+    color: #2596be !important;
     background: transparent !important;
 }
 .btn:hover::before {
 	opacity: 0 ;
 	transform: scale(0.5,0.5);
-    color: #00003c !important;
+    color: #2596be !important;
 	background-color: transparent;
-    border: 1px solid #00003c;
+    border: 1px solid #2596be;
 }
 .btn::after {
 	content: '';
@@ -175,9 +175,9 @@ ion-content{
 .btn:hover::after {
 	opacity: 1;
 	transform: scale(1,1);
-    color: #00003c !important;
+    color: #2596be !important;
 	background-color: transparent;
-    border: 1px solid #00003c;
+    border: 1px solid #2596be;
 }
 
 
@@ -185,7 +185,7 @@ ion-content{
 // .app-btn:hover{
 //     background: transparent !important;
 //     color: #000;
-//     border: 1px solid #00003c;
+//     border: 1px solid #2596be;
 // }
 
 a:hover{
@@ -878,7 +878,7 @@ header.productPage ul li a{
 
 .thumbDiv{
     width:100%;
-    background: #cdcdcd;
+    background: rgba(0, 0, 0, 0.8);
     overflow: hidden;  
     position: relative;
 }
@@ -887,11 +887,12 @@ header.productPage ul li a{
     width: 100%;
     height: auto;
     opacity: 1;
-    transition: .8s ease;
+    transition: transform 9s;
     backface-visibility: hidden;    
     display: block;
     cursor: pointer;
 }
+
 
 .thumbContent{    
     font-family: "Jost", sans-serif;
@@ -901,7 +902,7 @@ header.productPage ul li a{
     top: 0px;
     // -ms-transform: translate(-50%, -50%);
     padding-left: 50px;
-    padding-top: 65%;
+    padding-top: 68%;
     width: 100%;
     height: 100%;
     color: #ffffff;
@@ -917,8 +918,8 @@ header.productPage ul li a{
 }
 
 .thumbDiv:hover .thumb {
-    opacity: 0.3;
-    transform: scale(1.12);  
+    opacity: 0.5;
+    transform: scale(1.5);  
 }
 
 .thumbDiv:hover .thumbContent {
@@ -930,7 +931,7 @@ header.productPage ul li a{
     font-size: 30px;
     font-weight: 400;
     letter-spacing: 2.5px;    
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 }
 .proPrice{
     font-size: 17px;

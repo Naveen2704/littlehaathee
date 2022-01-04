@@ -23,6 +23,8 @@ export class HomePage implements OnInit {
       appInfo: any = [];
       total: any = 0;
       menus: any = [];
+      policyList: any = [];
+      year = new Date().getFullYear();
   constructor(private service: GlobalService) { 
       // this.appInfo = JSON.parse(localStorage.getItem('info'));
       // console.log(this.appInfo.darkLogo)
@@ -35,12 +37,21 @@ export class HomePage implements OnInit {
     this.getFeeding();
     this.getSocial();
     this.menusList();
+    this.policiesList();
     if(this.service.loginSub === undefined){
         this.service.loginSub = this.service.invokeLogin.subscribe((res:any)=>{
             this.checkLogin();
         });
     }
   }
+  
+  policiesList(){
+    this.service.getPolicies().subscribe((data: any) => {
+      if(data.code === '200'){
+          this.policyList = data.result.policies;
+      }
+    });
+}
 
   removeCart(cart_id){
     Swal.fire({

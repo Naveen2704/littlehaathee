@@ -37,6 +37,7 @@ import { ArtistviewComponent } from './main/artistview/artistview.component';
 import { ArtworkComponent } from './main/artwork/artwork.component';
 import { ArtworkViewComponent } from './main/artwork-view/artwork-view.component';
 import { OrderViewComponent } from './main/account/order-view/order-view.component';
+import { ArtistPopupComponent } from './main/single/artist-popup/artist-popup.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { OrderViewComponent } from './main/account/order-view/order-view.compone
       ArtistviewComponent,
       ArtworkComponent,
       ArtworkViewComponent,
-      OrderViewComponent
+      OrderViewComponent,
+      ArtistPopupComponent
     ],
   entryComponents: [],
   imports: [

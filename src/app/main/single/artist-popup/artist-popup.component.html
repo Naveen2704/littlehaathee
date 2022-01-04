@@ -1,3 +1,17 @@
-<p>
-  artist-popup works!
-</p>
+<ion-content>
+  <div class="container px-2">
+    <h3 class="text-center">Artist Info</h3>
+    <div class="row" *ngFor="let artist of artist">
+      <div class="col-3">
+          <img [src]="artist.artist_image" alt="">
+      </div>
+      <div class="col-9">
+          <h5 class="context">{{ artist.artist_name }}</h5>
+          <p class="context">{{ artist.description }}</p>
+      </div>
+      <div class="col-12">
+          <!-- <iframe width="100%" height="250" src="{{ artist.video_link }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+      </div>
+    </div>
+  </div>
+</ion-content>

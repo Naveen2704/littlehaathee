@@ -12,7 +12,7 @@ import { GlobalService } from 'src/app/global.service';
 export class ProductsComponent implements OnInit {
     Cat_id: number;
     proList: any;
-
+    catInfo: any = [];
   constructor(private route: ActivatedRoute, private service: GlobalService) {
    }
 
@@ -25,8 +25,9 @@ export class ProductsComponent implements OnInit {
 
   Catproducts(catid: number){
       this.service.catProducts(catid).subscribe((data: any) => {
-
           this.proList = data.result.productList;
+          this.catInfo = data.result.category;
+          console.log(this.catInfo)
           console.log(this.proList);
       });
   }

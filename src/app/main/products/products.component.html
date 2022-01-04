@@ -1,5 +1,13 @@
 
   <ion-content>
+      <div class="container-fluid p-0">
+        <div class="catDiv">
+            <img [src]="catInfo.category_image" alt="" class="cat">
+            <div class="catContent deskView">
+                <h1 class="catName">{{ catInfo.category_name }}</h1>
+            </div>
+        </div>
+      </div>
         <div class="container" >
             <div class="row">
                 <!-- <div class="col-md-2 col-lg-2">
@@ -24,16 +32,15 @@
                     <ng-template #nonifarea>
                         <div class="row">
                             <div class="col-6 col-md-3 my-2 text-center" *ngFor="let p of proList;">
-                                <div class="card mb-2">
+                                <div class="card mb-2 border-0">
                                     <a routerLink="/single/{{ p.product_id }}" >
-                                        <img [src]="p.product_image" alt="" class="card-img-top">
+                                        <div class="card border">
+                                            <img src="{{ p.product_image }}" alt="" class="card-img-top">
+                                            <h4>{{ p.product_name }}</h4>
+                                            <p class="font-weight-bold">Rs. {{ (p.sp_price != 0)?p.sp_price:p.price }} <strike *ngIf="p.sp_price != 0">Rs. {{ p.price }}</strike></p>
+                                            <p><i class="fas fa-circle mx-2 shadow border" *ngFor="let c of p.colors" [ngStyle]="{'font-size':'25px','color': c,'border-radius':'50%'}"></i></p>
+                                        </div>
                                     </a>
-                                    <div class="card-body px-0 py-0 pt-1">
-                                        <h5>{{ p.product_name }}</h5>
-                                        <p class="font-weight-bold">Rs. {{ p.price }}</p>
-                                        <p><i class="fas fa-circle mx-2 shadow border" *ngFor="let c of p.colors" [ngStyle]="{'font-size':'25px','color': c,'border-radius':'50%'}"></i></p>
-                                        <button class="btn btn-block" (click)="addCart(p.product_id, p.stock_id)">Add TO cart</button>        
-                                    </div>
                                 </div>
                             </div>
                         </div>

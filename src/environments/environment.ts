@@ -7,10 +7,10 @@ export const environment = {
   production: false
 };
 
-export const url = 'http://localhost:8080/littlehathee/API/FrontFrames/';
-export const pro_imagesUrl = 'http://localhost:8080/littlehathee/uploads/products/';
-// export const pro_imagesUrl = 'https://www.littlehaathee.com/admin@2021/uploads/products/';
-// export const url = 'https://www.littlehaathee.com/admin@2021/API/FrontFrames/';
+// export const url = 'http://localhost:8080/littlehathee/API/FrontFrames/';
+// export const pro_imagesUrl = 'http://localhost:8080/littlehathee/uploads/products/';
+export const pro_imagesUrl = 'https://www.littlehaathee.com/admin@2021/uploads/products/';
+export const url = 'https://www.littlehaathee.com/admin@2021/API/FrontFrames/';
 
 /*
  * For easier debugging in development mode, you can import the following file

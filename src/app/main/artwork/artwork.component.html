@@ -4,9 +4,10 @@
         <div class="row">
             <div class="col-md-2 col-6 mb-3 text-center artwork_div" *ngFor="let p of artworkInfo">
                 <a routerLink="/artworkView/{{ p.artwork_id }}" class="text-center mb-2">
-                    <img [src]="p.image" alt="" class="shadow">
+                    <img [src]="p.image" alt="">
                 </a>
             </div>
         </div>
     </div>
+    <app-footer></app-footer>
 </ion-content>

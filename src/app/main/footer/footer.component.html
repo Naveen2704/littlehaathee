@@ -7,28 +7,30 @@
             <div class="col-md-4 col-12">
                 <h4 class="pb-2 border-bottom">GET TO KNOW US</h4>
                 <ul class="navbar-nav">
-                    <li><a [routerLink]="['/about']">About Us</a></li>
-                    <li *ngFor="let p of policyList">
-                        <a routerLink="/policy/{{ p.policy_id }}">{{ p.policy_name }}</a>
+                    <li class="pl-1 list-group"><a [routerLink]="['/about']" class="text-dark my-2">About Us</a></li>
+                    <li class="pl-1 list-group" *ngFor="let p of policyList">
+                        <a routerLink="/policy/{{ p.policy_id }}" class="text-dark my-2">{{ p.policy_name }}</a>
                     </li>
-                    <!-- <li><a href="">Seller Policy</a></li>
-                    <li><a href="">Buyer Policy</a></li>
-                    <li><a href="">Cancellation Policy</a></li>
-                    <li><a href="">Shipping & Refund Policy</a></li>
-                    <li><a href="">Return Policy</a></li>
-                    <li><a href="">Terms & Conditions</a></li> -->
                 </ul>
             </div>
             <div class="col-md-4 col-12">
                 <h4 class="pb-2 border-bottom">Quick Links</h4>
                 <ul class="navbar-nav">
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Shop</a></li>
-                    <li><a href="">Artists</a></li>
-                    <li><a href="">Login</a></li>
-                    <li><a href="">Register</a></li>
+                    <li class="pl-1 list-group"><a  class="text-dark my-2" href="">Home</a></li>
+                    <li class="pl-1 list-group"><a  class="text-dark my-2" href="">Shop</a></li>
+                    <li class="pl-1 list-group"><a  class="text-dark my-2" href="">Artists</a></li>
+                    <li class="pl-1 list-group"><a  class="text-dark my-2" href="">Login</a></li>
+                    <li class="pl-1 list-group"><a  class="text-dark my-2" href="">Register</a></li>
                 </ul>
             </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col text-center">
+                <p>littlehaathee.com &copy; {{ year }}</p>
+            </div>
+            <!-- <div class="col text-right">
+                    Powered by Beaut Infolore
+            </div> -->
         </div>
     </div>
 </footer>

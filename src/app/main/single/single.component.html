@@ -93,7 +93,7 @@
                         <div class="col-10 m-auto">
                             <h5 class="mt-0">{{ p.artist_name }}</h5>
                             <p>
-                                <button class="say_hello" data-toggle="modal" data-target="#artistModal">Say Hello</button>
+                                <button class="say_hello" (click)="artistInfo(p.artist_id)" >Say Hello</button>
                             </p>
                         </div>
                     </div>
@@ -101,7 +101,7 @@
                     <p>{{ p.description }}</p>
                     <p class="font-weight-bold mb-0">Colors:</p>
                     <div class="d-flex">
-                        <span class="card p-2 px-3 card-info mr-2 proIcon"  *ngFor="let c of p.available_colors" (click)="colorImages(p.product_id, c)"  [ngStyle]="{'background-color': c}"></span>
+                        <p><i class="fas fa-circle mx-2 shadow border proIcon" *ngFor="let c of p.available_colors" (click)="colorImages(p.product_id, c)" [ngStyle]="{'font-size':'25px','color': c,'border-radius':'50%'}"></i></p>
                     </div>
                     <p class="font-weight-bold mt-2">Sizes:</p>
                     <div class="d-flex">
@@ -119,16 +119,13 @@
     
             <h3 class="pb-4 border-bottom">YOU MAY ALSO LIKE</h3>        
             <div class="row">
-                <div class="proDiv col-md-3 col-6" *ngFor="let p of relatedList">
+                <div class="proDiv text-center col-md-3 col-6" *ngFor="let p of relatedList">
                     <a routerLink="/single/{{ p.product_id }}" (click)="singlePro(p.product_id)">
-                        <div class="card shadow mb-2">
-                            <img [src]="p.product_image" alt="" class="card-img-top">
-                            <div class="card-body">
-                                <h5>{{ p.product_name }}</h5>
-                                <p class="font-weight-bold">Rs. {{ p.price }}</p>
-                                <p><i class="fas fa-circle mx-2 shadow border" *ngFor="let c of p.colors" [ngStyle]="{'font-size':'25px','color': c,'border-radius':'50%'}"></i></p>
-                                <!-- <button class="btn btn-block app-btn">Add TO cart</button>         -->
-                            </div>
+                        <div class="card border">
+                            <img src="{{ p.product_image }}" alt="" class="card-img-top">
+                            <h4>{{ p.product_name }}</h4>
+                            <p class="font-weight-bold">Rs. {{ (p.sp_price != 0)?p.sp_price:p.price }} <strike *ngIf="p.sp_price != 0">Rs. {{ p.price }}</strike></p>
+                            <p><i class="fas fa-circle mx-2 shadow border" *ngFor="let c of p.colors" [ngStyle]="{'font-size':'25px','color': c,'border-radius':'50%'}"></i></p>
                         </div>
                     </a>
                 </div>

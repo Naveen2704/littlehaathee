@@ -120,13 +120,18 @@
                     <img src="{{ p.menu_image }}" class="thumb">
                     <div class="thumbContent">
                         <p class="proName">{{ p.menu_name }}</p>
-                        <!-- <p class="proPrice"><i class="fas fa-rupee-sign"></i> 675.00</p> -->
-                        <a routerLink="/products/{{ p.menu_id }}" class="proAction btn">VIEW</a>
+                        <a routerLink="/products/{{ p.menu_id }}" class="btn w-50">View Products</a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row title">
+        </div>
+</section>
+
+<section class="process">
+    
+    <div class="container-fluid">
+        <div class="row title text-center">
             <div class="col-lg-12">
                 <h2>NEW Arrivals</h2>
                 <p class="context">Shop the latest </p>
@@ -149,7 +154,7 @@
     </div>
 </section>
 
-<section class="process">
+<section class="">
     <div class="container">
         <div class="row title">
             <div class="col-lg-12 text-center">
@@ -159,78 +164,41 @@
         </div>
         <div class="row">
             <div class="col-lg-8 col-md-12 offset-lg-2 center">
-                <div class="iframe-container">
-                    <iframe width="800" height="451" src="https://www.youtube-nocookie.com/embed/MkH_BPL2pyE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
+                <ion-slides pager class="mt-2">
+                    <ion-slide>
+                      <div class="slide">
+                        <img src="assets/slide1.jpeg" class="mb-4"/>
+                        <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                        </p>
+                      </div>
+                    </ion-slide>
+                    <ion-slide>
+                      <div class="slide">
+                        <img src="assets/slide2.jpeg" class="mb-4"/>
+                        <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                        </p>
+                      </div>
+                    </ion-slide>
+                </ion-slides>          
             </div>
         </div>
     </div>
 </section>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-6 col-md-12 tblBlock ourStory">
-            <div class="mobContent">
-                <div class="vitals text-center">
-                    <h3>{{ story.title }}</h3>
-                    <p>{{ story.description }}</p>
-                    <a href="#" class="btn" [routerLink]="['/about']">Know our Story</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6 col-md-12 vitals tblBlock deskContent">
-            <div class="text-center">
-                <h3>{{ story.title }}</h3>
-                <p>{{ story.description }}</p>
-                <a href="#" class="btn" [routerLink]="['/about']">Know our
-                    Story</a>
+<section class="process">
+    <div class="container  py-5">
+        <div class="row">
+            <div class="col-12 text-center title">
+                <h2 class="mb-4">Little Haathee</h2>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                <p class="text-center"><a routerLink="/about" class="btn">Know Our Story</a></p>
             </div>
         </div>
     </div>
-</div>
+</section>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-6 vitals tblBlock deskContent">
-            <div class="text-center">
-                <h3 class="d-block">{{ feeding.title }}</h3>
-                <p>{{ feeding.description }}</p>
-                <a href="#" class="btn" [routerLink]="['/about']">Know our
-                    Story</a>
-            </div>
-        </div>
-        <div class="col-lg-6 col-md-12 tblBlock feedingCreativity">
-            <div class="mobContent">
-                <div class="vitals text-center">
-                    <h3 class="d-block">{{ feeding.title }}</h3>
-                    <p>{{ feeding.description }}</p>
-                    <a href="#" class="btn" [routerLink]="['/about']">Know our Story</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-6 col-md-12 tblBlock socialEnterprise">
-            <div class="mobContent">
-                <div class="vitals text-center">
-                    <h3 class="d-block">{{ social.title }}</h3>
-                    <p>{{ social.description }}</p>
-                    <a href="#" class="btn" [routerLink]="['/about']">Know our Story</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6 vitals tblBlock deskContent">
-            <div class="text-center">
-                <h3 class="d-block">{{ social.title }}</h3>
-                <p>{{ social.description }}</p>
-                    <a href="#" class="btn" [routerLink]="['/about']">Know our Story</a>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="container-fluid tblBlock digitals">
     <div class="container">
@@ -262,21 +230,48 @@
 <section class="footer">
     <div class="container-fluid">
         <div class="container">
-            <div class="row">
-                <div class="col text-center">
-                    <p>littlehaathee.com &copy; 2020</p>
-                </div>
-                <!-- <div class="col text-right">
-                        Powered by Beaut Infolore
-                </div> -->
-            </div>
         </div>
     </div>
 </section>
 <!-- 
         </div>
     </div> -->
-    <!-- <app-footer></app-footer> -->
+    <footer class="bg-footer py-5">
+        <div class="container footer-row mt-auto  w-100">
+            <div class="row">
+                <div class="col-md-4 col-12 my-auto">
+                    <img src="assets/images/logoDark.png" class="w-75" alt="">
+                </div>
+                <div class="col-md-4 col-12">
+                    <h4 class="pb-2 border-bottom">GET TO KNOW US</h4>
+                    <ul class="navbar-nav">
+                        <li class="pl-1 list-group"><a [routerLink]="['/about']" class="text-dark my-2">About Us</a></li>
+                        <li class="pl-1 list-group" *ngFor="let p of policyList">
+                            <a routerLink="/policy/{{ p.policy_id }}" class="text-dark my-2">{{ p.policy_name }}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4 col-12">
+                    <h4 class="pb-2 border-bottom">Quick Links</h4>
+                    <ul class="navbar-nav">
+                        <li class="pl-1 list-group"><a  class="text-dark my-2" href="">Home</a></li>
+                        <li class="pl-1 list-group"><a  class="text-dark my-2" href="">Shop</a></li>
+                        <li class="pl-1 list-group"><a  class="text-dark my-2" href="">Artists</a></li>
+                        <li class="pl-1 list-group"><a  class="text-dark my-2" href="">Login</a></li>
+                        <li class="pl-1 list-group"><a  class="text-dark my-2" href="">Register</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col text-center">
+                    <p>littlehaathee.com &copy; {{ year }}</p>
+                </div>
+                <!-- <div class="col text-right">
+                        Powered by Beaut Infolore
+                </div> -->
+            </div>
+        </div>
+    </footer>
  </ion-content>
 
  <mat-sidenav-container class="example-container" >

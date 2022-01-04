@@ -8,6 +8,7 @@ import { GlobalService } from 'src/app/global.service';
 })
 export class FooterComponent implements OnInit {
     policyList: any = [];
+    year = new Date().getFullYear();
 
   constructor(private service: GlobalService) { }
 

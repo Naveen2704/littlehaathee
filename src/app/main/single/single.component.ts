@@ -9,6 +9,7 @@ import { GlobalService } from 'src/app/global.service';
 import { ArtistsComponent } from '../artists/artists.component';
 import { pro_imagesUrl } from '../../../environments/environment';
 import Swal from 'sweetalert2';
+import { ArtistPopupComponent } from './artist-popup/artist-popup.component';
  
 @Component({
   selector: 'app-single',
@@ -23,8 +24,9 @@ export class SingleComponent implements OnInit {
     featuredImage: any;
     relatedList: any;
     additional_images: any = [];
+    colorSelection: boolean = false;
 
-  constructor(private route: ActivatedRoute, private service: GlobalService, private toast: ToastController, private router: Router, private loader: LoadingController) { }
+  constructor(private route: ActivatedRoute, private service: GlobalService, private toast: ToastController, private router: Router, private loader: LoadingController, private modal: ModalController) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -38,9 +40,14 @@ export class SingleComponent implements OnInit {
   }
 
   artistInfo(artist_id){
-    this.service.getArtistInfo(artist_id).subscribe((data: any) => {
+    this.service.getArtistInfo(artist_id).subscribe(async (data: any) => {
         if(data.code === '200'){
             this.artist = data.result.info;
+            const popup = await this.modal.create({
+              component: ArtistPopupComponent,
+              componentProps: { value: this.artist }
+            })
+            await popup.present();
             console.log(this.artist);
         }
     });
@@ -59,7 +66,6 @@ export class SingleComponent implements OnInit {
           this.proList = data.result.productList;
           this.featuredImage = this.proList[0].product_image;
           this.additional_images = this.proList[0].additional_images;
-          this.artistInfo(this.proList[0].artist_id);
           this.Catproducts(this.proList[0].category_id);
       });
   }
@@ -75,6 +81,10 @@ export class SingleComponent implements OnInit {
             this.additional_images = data.result.list[0].additional_images;
         }
       });
+  }
+
+  checkColor() {
+
   }
 
   addCart(pro_id, stock_id) {
